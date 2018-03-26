@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>association-search</title>
+	<link rel="stylesheet" href="./style.css">
+	<script src="./associateSearch.js"></script>
+</head>
+<body>
+	<div id="box">
+	    <input type="text" id="txtSearch">
+	    <input type="button" value="百度一下" id="btnSearch">
+	</div>
+	<script>
+		onload = function(){
+			var AS = new AssociateSearch('box', 'txtSearch');
+
+			// 数据格式
+			var json = {
+				data: [
+					{
+						id: 1,
+						title: '阿'
+					},
+					{
+						id: 2,
+						title: '阿里'
+					},
+					{
+						id: 3,
+						title: '阿里巴巴'
+					}
+				]
+			}
+			AS.ajaxSearch(function(inputValue, back){
+				// 此回调函数一般用来请求后台数据
+				// 将获取到的数据传入back中
+				back(json)
+			})
+		}
+	</script>
+</body>
+</html>
